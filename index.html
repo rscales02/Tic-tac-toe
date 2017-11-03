@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tickety Tack I Won't Go Back</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+</head>
+
+<body>
+    <div class="inline hidden float-left" id="turn1">It is your turn, player 1</div>
+    <div class="inline hidden float-right" id="turn2">It is your turn player 2</div>
+    <div class="play-score">
+      <h2>Impossible Tic Tac Toe</h2>
+      <h3>Prepare to lose!</h3>
+        <div class="scoreboard not-visible">
+            <div class="inline">
+                <p class="inline" id="p1name">Player 1:</p>
+                <input type="text" value="0" id="player-1" class="score" disabled/>
+            </div>
+            <div class="vl inline"></div>
+            <div class="inline" id="p2score">
+                <p class="inline" id="p2name">Player 2:</p>
+                <input type="text" value="0" id="player-2" class="score" disabled/>
+            </div>
+        </div>
+        <div id="board" class="board">
+          <div id="playerNumber" class="hidden">
+            <br><br><br><br><br><br><br>
+            <p>How Many Players?</p>
+            <br><br>
+            <button id="btn1" class="players">1 Player</button>       
+            <button class="players">2 Players</button>
+          </div>
+          <div id="playerType" class="hidden">
+            <br><br><br><br><br><br><br>
+            <p id="choice">Choose Your Side:</p>
+            <br><br><br><br>
+            <button id="btnX" class="type">X</button>
+            <div class="divider"></div>
+            <button class="type">O</button>
+          </div>
+          <br><br>
+            <table id="game" class="hidden">
+                <tr>
+                    <td class="tic"><button class="gamebtn" id="0"></button></td>
+                    <td class="tic"><button class="gamebtn center-colum" id="1"></button></td>
+                    <td class="tic"><button class="gamebtn" id="2"></button></td>
+                </tr>
+                <tr>
+                    <td class="tic"><button class="gamebtn center-row" id="3"></button></td>
+                    <td class="tic"><button class="gamebtn center-row center-colum" id="4"></button></td>
+                    <td class="tic"><button class="gamebtn center-row" id="5"></button></td>
+                </tr>
+                <tr>
+                    <td class="tic"><button class="gamebtn" id="6"></button></td>
+                    <td class="tic"><button class="gamebtn center-colum" id="7"></button></td>
+                    <td class="tic"><button class="gamebtn" id="8"></button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

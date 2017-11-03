@@ -1,0 +1,115 @@
+@font-face {
+  font-family: Chalk;
+  src: url('https://dl.dropbox.com/s/dyy2ls87ziv5cck/DJB%20Chalk%20It%20Up.ttf?dl=0');
+}
+
+body{
+  margin: 0 auto;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.play-score {
+  background-color: gold;
+  height: 525px;
+  line-height: 16px;
+  margin: 0 auto;
+  width: 450px;
+}
+
+h2 {
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.hidden {
+  display: none;
+}
+
+.not-visible {
+  visibility: hidden;
+}
+
+input {
+  background: transparent;
+  border: none;
+  text-align: center;
+  width: 1.5em;
+}
+
+.vl {
+  border-left: 2px solid black;
+  height: 20px;
+  width: 1em;
+}
+
+.board {
+  background-color: #127c06;
+  font-family: Chalk;
+  font-size: 35px;
+  height: 425px;
+  margin: auto;
+  position: relative;
+  width: 425px;
+}
+
+.players, .type {
+  background: transparent;
+  border: none;
+}
+
+.type {
+  font-size: 65px;
+}
+
+.divider {
+  display: inline-block;
+  width: 30px;
+}
+
+table {
+  margin: auto;
+  position: relative;
+}
+
+.tic {
+  font-size: 90px;
+  height: 120px;
+  width: 120px;
+}
+
+.gamebtn {
+  background: transparent;
+  border: none;
+  height: 120px;
+  width: 120px;
+}
+
+.gamebtn:focus {
+  outline: 0;
+}
+
+.center-row {
+  border-bottom: 2px solid #FEFEF2;
+  border-top: 2px solid #FEFEF2;
+}
+
+.center-colum {
+  border-left: 2px solid #FEFEF2;
+  border-right: 2px solid #FEFEF2;
+}
