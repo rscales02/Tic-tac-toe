@@ -9,6 +9,24 @@ body{
   text-align: center;
 }
 
+.turns {
+  margin: 0 auto;
+  width: 450px;
+}
+
+#turn1 {
+  background-color: maroon;
+  border-radius: 5px;
+  width: 200px;
+}
+
+#turn2 {
+  background-color: blue;
+  border-radius: 5px;
+  color: white;
+  width: 200px;
+}
+
 .play-score {
   background-color: gold;
   height: 525px;
@@ -27,14 +45,6 @@ h3 {
 
 .inline {
   display: inline-block;
-}
-
-.float-left {
-  float: left;
-}
-
-.float-right {
-  float: right;
 }
 
 .hidden {

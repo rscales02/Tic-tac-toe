@@ -15,6 +15,7 @@ function howMany() {
         if ($(this).attr('id') == 'btn1') {
             $('#p1name').text('Puny Human:');
             $('#p2name').text('Computer Overlord:');
+            $('#turn1').text('Puny Human, it is your turn...')
             team(1);
         } else {
             team(2);
@@ -56,7 +57,7 @@ function gameOn(num, team) {
 
     //set board
     origBoard = Array.from(Array(9).keys());
-    $('#turn1').removeClass('hidden');
+    $('#turn1').removeClass('not-visible');
 
     //player clicks
     $('.gamebtn').click(function() {
@@ -69,12 +70,12 @@ function gameOn(num, team) {
             if (num == 2) {
                 if (p1Turn) {
                     turn(player1, square);
-                    $('#turn1').addClass('hidden');
-                    $('#turn2').removeClass('hidden');
+                    $('#turn1').addClass('not-visible');
+                    $('#turn2').removeClass('not-visible');
                     p1Turn = false;
                 } else {
-                    $('#turn2').addClass('hidden');
-                    $('#turn1').removeClass('hidden');
+                    $('#turn2').addClass('not-visible');
+                    $('#turn1').removeClass('not-visible');
                     turn(player2, square);
                     p1Turn = true;
                 }
@@ -83,6 +84,7 @@ function gameOn(num, team) {
             } else {
                 //player1 turn
                 turn(player1, square);
+                $('#turn1').addClass('not-visible');
                 //ai player turn
                 Hal(origBoard, player2);
 
@@ -121,41 +123,53 @@ function turn(team, square) {
 }
 
 function Hal(board, team) {
-    
-    var spot;
-    var move;
-    bestSpot();
-    
+    setTimeout(function() {
+        var move = bestSpot();
 
+        $('#' + move).text(team);
+        origBoard[move] = team;
+
+        if (checkWin(origBoard, team)) {
+            adjustScore('Player 2');
+            setTimeout(function() {
+                alert('You Lose, Puny Human');
+                reset();
+            }, 20);
+        } else if (checkTie(origBoard)){
+            setTimeout(function() {
+                alert('This match is a tie.');
+                reset();
+            }, 50);
+        }
+        $('#turn1').removeClass('not-visible');
+    }, 500);
 }
 
-function bestSpot(){
-    console.log(minimax(origBoard, player2).index);
+function bestSpot() {
     return minimax(origBoard, player2).index;
 }
 
-function minimax(board, player){
+function minimax(board, player) {
     var spaces = availableSpaces(board);
     depth++;
-    if (checkWin(board, player2)){
-        return {score: 10};
+    if (checkWin(board, player2)) {
+        return { score: 10 + depth };
     } else if (checkWin(board, player1)) {
-        return {score: -10};
-    } else if (checkTie(board)){
-        return {score: 0};
+        return { score: -10 - depth };
+    } else if (checkTie(board)) {
+        return { score: 0 };
     }
 
     var moves = [];
-    for (var i = 0; i < spaces.length; i++){
+    for (var i = 0; i < spaces.length; i++) {
         var move = {};
         var result;
         move.index = board[spaces[i]];
         board[spaces[i]] = player;
 
-        if (player == player2){
+        if (player == player2) {
             result = minimax(board, player1);
-            console.log(result);
-            console.log(move);
+
             move.score = result.score;
         } else {
             result = minimax(board, player2);
@@ -168,23 +182,24 @@ function minimax(board, player){
 
     var bestMove;
     var bestScore;
-    if (player == player2){
-        bestScore = -10000;
-        for (var j = 0; j < moves.length; j++){
-            if (moves[j].score > bestScore){
+    if (player == player2) {
+        bestScore = -100000000;
+        for (var j = 0; j < moves.length; j++) {
+            if (moves[j].score > bestScore) {
                 bestScore = moves[j].score;
                 bestMove = j;
             }
         }
     } else {
-        bestScore = 10000;
-        for (var k = 0; k < moves.length; k++){
-            if (moves[k].score < bestScore){
+        bestScore = 100000000;
+        for (var k = 0; k < moves.length; k++) {
+            if (moves[k].score < bestScore) {
                 bestScore = moves[k].score;
                 bestMove = k;
             }
         }
     }
+
     return moves[bestMove];
 }
 
