@@ -4,6 +4,7 @@
 }
 
 body{
+  background: url('bricks.jpg');
   margin: 0 auto;
   padding-top: 50px;
   text-align: center;
@@ -29,6 +30,7 @@ body{
 
 .play-score {
   background-color: gold;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
   height: 525px;
   line-height: 16px;
   margin: 0 auto;
